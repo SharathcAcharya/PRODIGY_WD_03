@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="google-site-verification" content="RpeO1OHgzhhkPEF-bWS-8IlnxfWXmlnR__F2k8JbaUo" />
+    <link rel="shortcut icon" href="favicon.svg" type="image/svg">
+    <link rel="manifest" href="/manifest.json" />
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -19,5 +21,21 @@
         tic_tac_toe.start();
     </script>
     
+     <!-- PWA Service Worker Script -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker
+          .register("/ServiceWorker.js")
+          .then((Reg) => {
+            console.log("SW Registered: ", Reg.scope);
+          })
+          .catch((RegErr) => {
+            console.log("SW Registration failed: ", RegErr);
+          });
+      });
+    }
+  </script>
+  <!-- PWA Service Worker Script -->
 </body>
 </html>
